@@ -5,7 +5,7 @@ import japbook.jpashop.domain.item.Item;
 import japbook.jpashop.repository.ItemRepository;
 import japbook.jpashop.repository.MemberRepository;
 import japbook.jpashop.repository.OrderRepository;
-
+import japbook.jpashop.repository.OrderSearch;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -48,6 +48,9 @@ public class OrderService {
         return order.getId();
     }
 
+    /**
+     * 주문 취소
+     */
     @Transactional
     public void cancelOrder(Long orderId) {
         //주문 엔티티 조회
@@ -55,8 +58,9 @@ public class OrderService {
         //주문 취소
         order.cancel();
     }
- /*   //검색
-     public List<Order> findOrders(OrderSearch orderSearch) {
+
+    //검색
+    public List<Order> findOrders(OrderSearch orderSearch) {
         return orderRepository.findAllByString(orderSearch);
-    }*/
+    }
 }
